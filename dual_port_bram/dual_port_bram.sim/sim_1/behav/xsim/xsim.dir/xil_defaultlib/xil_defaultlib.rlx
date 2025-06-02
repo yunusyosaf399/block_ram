@@ -1,0 +1,7 @@
+0.7
+2020.2
+Nov  8 2024
+22:36:55
+/home/younas/Documents/Vivado/dual_port_bram/dual_port_bram.sim/sim_1/behav/xsim/glbl.v,1724786425,verilog,,,,glbl,,uvm,,,,,,
+/home/younas/Documents/Vivado/dual_port_bram/dual_port_bram.srcs/sim_1/new/tb_bram_dual_port.sv,1748793127,systemVerilog,,,,tb_dual_port_ram,,uvm,,,,,,
+/home/younas/Documents/Vivado/dual_port_bram/dual_port_bram.srcs/sources_1/new/block_ram_dual_port.sv,1748792863,systemVerilog,,/home/younas/Documents/Vivado/dual_port_bram/dual_port_bram.srcs/sim_1/new/tb_bram_dual_port.sv,,block_ram_dual_port,,uvm,,,,,,
