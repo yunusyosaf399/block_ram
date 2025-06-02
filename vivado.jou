@@ -1,0 +1,56 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Mon Jun  2 16:23:43 2025
+# Process ID         : 245214
+# Current directory  : /home/younas/Documents/bram
+# Command line       : vivado
+# Log file           : /home/younas/Documents/bram/vivado.log
+# Journal file       : /home/younas/Documents/bram/vivado.jou
+# Running On         : younas-Latitude-7280
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 20.04.6 LTS
+# Processor Detail   : Intel(R) Core(TM) i7-7600U CPU @ 2.80GHz
+# CPU Frequency      : 1131.165 MHz
+# CPU Physical cores : 2
+# CPU Logical cores  : 4
+# Host memory        : 16358 MB
+# Swap memory        : 34359 MB
+# Total Virtual      : 50718 MB
+# Available Virtual  : 44242 MB
+#-----------------------------------------------------------
+start_gui
+create_project bram_controller /home/younas/Documents/bram/bram_controller -part xc7vx485tffg1157-1
+create_bd_design "design_1"
+update_compile_order -fileset sources_1
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.4 blk_mem_gen_0
+endgroup
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:microblaze:11.0 microblaze_0
+endgroup
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.1 axi_bram_ctrl_0
+endgroup
+apply_bd_automation -rule xilinx.com:bd_rule:microblaze -config { all {1} axi_intc {0} axi_periph {Enabled} cache {None} clk {New Clocking Wizard} compress {1} cores {1} debug_module {Debug Only} disable {1} ecc {None} local_mem {16KB} preset {None}}  [get_bd_cells microblaze_0]
+apply_bd_automation -rule xilinx.com:bd_rule:microblaze -config { all {1} axi_intc {0} axi_periph {Disabled} cache {None} clk {/clk_wiz_1/clk_out1 (100 MHz)} compress {1} cores {1} debug_module {Debug Only} disable {1} ecc {None} local_mem {16KB} preset {None}}  [get_bd_cells microblaze_0]
+startgroup
+apply_bd_automation -rule xilinx.com:bd_rule:bram_cntlr -config {BRAM "Auto" }  [get_bd_intf_pins axi_bram_ctrl_0/BRAM_PORTA]
+apply_bd_automation -rule xilinx.com:bd_rule:bram_cntlr -config {BRAM "Auto" }  [get_bd_intf_pins axi_bram_ctrl_0/BRAM_PORTB]
+apply_bd_automation -rule xilinx.com:bd_rule:axi4 -config { Clk_master {/clk_wiz_1/clk_out1 (100 MHz)} Clk_slave {Auto} Clk_xbar {Auto} Master {/microblaze_0 (Periph)} Slave {/axi_bram_ctrl_0/S_AXI} ddr_seg {Auto} intc_ip {New AXI SmartConnect} master_apm {0}}  [get_bd_intf_pins axi_bram_ctrl_0/S_AXI]
+apply_bd_automation -rule xilinx.com:bd_rule:board -config { Manual_Source {Auto}}  [get_bd_intf_pins clk_wiz_1/CLK_IN1_D]
+apply_bd_automation -rule xilinx.com:bd_rule:board -config { Manual_Source {Auto}}  [get_bd_pins clk_wiz_1/reset]
+apply_bd_automation -rule xilinx.com:bd_rule:board -config { Manual_Source {Auto}}  [get_bd_pins rst_clk_wiz_1_100M/ext_reset_in]
+endgroup
+regenerate_bd_layout
+validate_bd_design
+make_wrapper -files [get_files /home/younas/Documents/bram/bram_controller/bram_controller.srcs/sources_1/bd/design_1/design_1.bd] -top
+add_files -norecurse /home/younas/Documents/bram/bram_controller/bram_controller.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v
+generate_target Simulation [get_files /home/younas/Documents/bram/bram_controller/bram_controller.srcs/sources_1/bd/design_1/design_1.bd]
+export_ip_user_files -of_objects [get_files /home/younas/Documents/bram/bram_controller/bram_controller.srcs/sources_1/bd/design_1/design_1.bd] -no_script -sync -force -quiet
+export_simulation -of_objects [get_files /home/younas/Documents/bram/bram_controller/bram_controller.srcs/sources_1/bd/design_1/design_1.bd] -directory /home/younas/Documents/bram/bram_controller/bram_controller.ip_user_files/sim_scripts -ip_user_files_dir /home/younas/Documents/bram/bram_controller/bram_controller.ip_user_files -ipstatic_source_dir /home/younas/Documents/bram/bram_controller/bram_controller.ip_user_files/ipstatic -lib_map_path [list {modelsim=/home/younas/Documents/bram/bram_controller/bram_controller.cache/compile_simlib/modelsim} {questa=/home/younas/Documents/bram/bram_controller/bram_controller.cache/compile_simlib/questa} {xcelium=/home/younas/Documents/bram/bram_controller/bram_controller.cache/compile_simlib/xcelium} {vcs=/home/younas/Documents/bram/bram_controller/bram_controller.cache/compile_simlib/vcs} {riviera=/home/younas/Documents/bram/bram_controller/bram_controller.cache/compile_simlib/riviera}] -use_ip_compiled_libs -force -quiet
+launch_simulation
+source design_1_wrapper.tcl
+close_sim
